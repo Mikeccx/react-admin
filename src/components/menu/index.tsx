@@ -41,9 +41,9 @@ const items: MenuProps['items'] = [
   ]),
 ];
 
-export default () => {
+export const SizeMenu = () => {
   const onClick: MenuProps['onClick'] = e => {
-    console.log('click ', e);
+    // console.log('click ', e);
   };
 
   return (

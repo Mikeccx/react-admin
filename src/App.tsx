@@ -3,10 +3,8 @@ import './App.less'
 import { Layout } from 'antd';
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css';
-// import Home from '../src/views/home'
-import Menu from '../src/components/menu'
-import { a } from '@dao/'
-// console.log(a)
+import Home from '@view/home'
+import {SizeMenu} from '@component/menu'
 
 const { Header, Sider } = Layout;
 
@@ -15,13 +13,13 @@ function App() {
     <BrowserRouter>
             <Layout>
                 <Sider className='sider' >
-                    <Menu/>
+                    <SizeMenu/>
                 </Sider>
                 <Layout>
                         <Header className='header'>
                         </Header>
                         <Routes>
-                            {/* <Route path='/' element={<Home/>}></Route> */}
+                            <Route path='/' element={<Home/>}></Route>
                             {/* <Route path='/wiki' element={<Wiki/>}></Route>
                             <Route path='/home' element={<Home/>}></Route> */}
                         </Routes>
