@@ -24,7 +24,9 @@
       "@view/*": ["src/views/*"],
       "@dao/*": ["src/dao/*"],
       "@store/*": ["src/store/*"],
-      "@component/*": ["src/components/*"]
+      "@component/*": ["src/components/*"],
+      "@mock/*": ["src/mock/*"]
+
     }
   },
   "include": [

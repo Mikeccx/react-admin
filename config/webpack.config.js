@@ -317,6 +317,7 @@ module.exports = function (webpackEnv) {
         '@api': path.resolve(__dirname, '../src/dao'),
         '@store': path.resolve(__dirname, '../src/store'),
         '@component': path.resolve(__dirname, '../src/components'),
+        '@mock': path.resolve(__dirname, '../src/mock'),
         // Support React Native Web
         // https://www.smashingmagazine.com/2016/08/a-glimpse-into-the-future-with-react-native-for-web/
         'react-native': 'react-native-web',

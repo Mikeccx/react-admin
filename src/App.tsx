@@ -5,7 +5,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css';
 import Home from '@view/home'
 import {SizeMenu} from '@component/menu'
-
+import HeaderC from '@component/header'
 const { Header, Sider } = Layout;
 
 function App() {
@@ -17,6 +17,7 @@ function App() {
                 </Sider>
                 <Layout>
                         <Header className='header'>
+                          <HeaderC/>
                         </Header>
                         <Routes>
                             <Route path='/' element={<Home/>}></Route>
