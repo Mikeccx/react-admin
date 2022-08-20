@@ -1,24 +1,33 @@
 import React from 'react';
-import logo from './logo.svg';
+import './App.less'
+import { Layout } from 'antd';
+import { BrowserRouter, Route, Routes } from 'react-router-dom'
 import './App.css';
+// import Home from '../src/views/home'
+import Menu from '../src/components/menu'
+import { a } from '@dao/'
+// console.log(a)
+
+const { Header, Sider } = Layout;
+
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+            <Layout>
+                <Sider className='sider' >
+                    <Menu/>
+                </Sider>
+                <Layout>
+                        <Header className='header'>
+                        </Header>
+                        <Routes>
+                            {/* <Route path='/' element={<Home/>}></Route> */}
+                            {/* <Route path='/wiki' element={<Wiki/>}></Route>
+                            <Route path='/home' element={<Home/>}></Route> */}
+                        </Routes>
+                </Layout>
+            </Layout>
+        </BrowserRouter>
   );
 }
 
