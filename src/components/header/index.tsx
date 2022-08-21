@@ -5,7 +5,7 @@ const App: React.FC = () => (
   <Breadcrumb>
     <Breadcrumb.Item>Home</Breadcrumb.Item>
     <Breadcrumb.Item>
-      <a href="">Application Center</a>
+      <a href="1">Application Center</a>
     </Breadcrumb.Item>
     <Breadcrumb.Item>
       <a href="">Application List</a>
