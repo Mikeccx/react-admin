@@ -28,6 +28,13 @@
     white-space: nowrap;
     text-overflow: ellipsis;
     line-height: 2;
+    display: block;
+    width: 100%;
+    overflow-x: hidden;
+    text-overflow: ellipsis;
+  }
+  &-resValue {
+    color: #000;
   }
   &-search {
     right: 25px;
@@ -59,6 +66,7 @@
     &-li {
       width: 100px;
       // height: 180px;
+      white-space: nowrap;
       padding: 4px 0;
       background-color: #fff;
       border-radius: 2px;
@@ -68,6 +76,10 @@
         background: #40a9ff;
         color: #fff;
       }
+    }
+    &-selected {
+      font-weight: bold;
+      background: #e6f7ff;
     }
     &-hidden {
       display: none;
