@@ -283,10 +283,9 @@ function CascaderView (){
 
   return (
     <div >
-      <DropdownWraper height='100px'></DropdownWraper>
 
       <CascaderWraper className='caswrapper' haha="100px">
-
+        <DropdownWraper height='100px'></DropdownWraper>
         <AntCascader options={options}
           // loadData={loadData}
           dropdownRender = {dropdownRender}

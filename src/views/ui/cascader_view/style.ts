@@ -4,11 +4,8 @@ interface haha {
   haha: string
 }
 export const CascaderWraper = styled.div<haha>`
-  .ant-select{
-    height: $(props =>
-      props.haha
-    )
-  }
+  background: red;
+  height: ${props => props.haha};
 `
 interface height {
   height: string
@@ -16,6 +13,8 @@ interface height {
 
 export const DropdownWraper = createGlobalStyle<height>`
   .ant-cascader-menu {
-    max-height: $(props => props.height)
+    max-height: ${props => { 
+      console.log('props', props)
+      return props.height}}
   }
 `
