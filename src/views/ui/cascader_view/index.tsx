@@ -4,7 +4,9 @@ import { Cascader as AntCascader } from 'antd';
 import { useState } from 'react';
 import { StarOutlined } from '@ant-design/icons';
 import classNames from 'classnames';
-const CascaderView = () => {
+import { CascaderWraper, DropdownWraper } from './style'
+// console.log('DropdownWraper', DropdownWraper)
+function CascaderView (){
   const options = [
     {
       value: 'zhejiang',
@@ -267,41 +269,44 @@ const CascaderView = () => {
   const suffixIcon = <span>-</span>
   const testEffect = classNames('test')
   const dropdownRender = (menu: any) => {
-      console.log('menu', menu)
+      // console.log('menu', menu)
       return (
         <div className={testEffect}>
           { menu }
-          <span>1</span>
+          <span>2</span>
         </div>
       )
   }
+  {/* <div className="cascader-demo flex justify-center items-center">
+    <Cascader options={options} placeHoder="test" defaultSelect={defaultSelect} changeOnSelect={changeOnSelect} resValue={resValue}/>
+  </div> */}
 
   return (
-    <>
-      {/* <div className="cascader-demo flex justify-center items-center">
-        <Cascader options={options} placeHoder="test" defaultSelect={defaultSelect} changeOnSelect={changeOnSelect} resValue={resValue}/>
-      </div> */}
+    <div >
+      <DropdownWraper height='100px'></DropdownWraper>
 
-      <div className="cascader-demo flex justify-center items-center">
-      <AntCascader options={options}
-        // loadData={loadData}
-        dropdownRender = {dropdownRender}
-        // multiple
-        showSearch = {{
-          render: (value, path) => {
-            console.log('path', path)
-            return <div title="13131313131313" style={{
-              width: '200px',
-              overflow: 'hidden',
-              textOverflow: 'ellipsis'
-            }}>1021030103103010301301031030103</div>
-          }
-        }}
-        dropdownMenuColumnStyle={(divStyle())}
-        onSearch={value => console.log(value)}
-      />
-      </div>
-    </>
+      <CascaderWraper className='caswrapper' haha="100px">
+
+        <AntCascader options={options}
+          // loadData={loadData}
+          dropdownRender = {dropdownRender}
+          // multiple
+          showSearch = {{
+            render: (value, path) => {
+              console.log('path', path)
+              return <div title="13131313131313" style={{
+                width: '200px',
+                overflow: 'hidden',
+                textOverflow: 'ellipsis'
+              }}>1021030103103010301301031030103</div>
+            }
+          }}
+          dropdownMenuColumnStyle={(divStyle())}
+          onSearch={value => console.log(value)}
+        />
+      </CascaderWraper>
+      
+    </div>
   )
 }
 
