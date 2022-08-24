@@ -4,8 +4,6 @@ interface haha {
   haha: string
 }
 export const CascaderWraper = styled.div<haha>`
-  background: red;
-  height: ${props => props.haha};
 `
 interface height {
   height: string

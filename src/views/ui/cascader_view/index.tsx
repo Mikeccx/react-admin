@@ -1,16 +1,17 @@
 import './index.less'
-import { Cascader } from '@component/cascader'
-import { Cascader as AntCascader } from 'antd';
+// import { Cascader } from '@component/cascader'
+// import { Cascader as AntCascader } from 'antd';
 import { useState } from 'react';
 import { StarOutlined } from '@ant-design/icons';
 import classNames from 'classnames';
+import { Cascader } from './cascader'
 import { CascaderWraper, DropdownWraper } from './style'
 // console.log('DropdownWraper', DropdownWraper)
-function CascaderView (){
+function CascaderView () {
   const options = [
     {
       value: 'zhejiang',
-      label: '浙江',
+      label: '浙江1121231312312321312321',
       children: [
         {
           value: 'hangzhou',
@@ -18,92 +19,15 @@ function CascaderView (){
           children: [
             {
               value: 'xihu',
+              disabled: false,
               label: (
                 <span>
                   <span>West Lake</span>
-                  <span>*</span>
+                  {/* <span>*</span> */}
                 </span>
-              )
+              ),
+              originLabel: 'west Lake'
             },
-            {
-              value: 'changjiang',
-              label: 'long River'
-            },
-            {
-              value: 'changjiang',
-              label: 'long River'
-            },
-            {
-              value: 'changjiang',
-              label: 'long River'
-            },
-            {
-              value: 'changjiang',
-              label: 'long River'
-            },
-            {
-              value: 'changjiang',
-              label: 'long River'
-            },{
-              value: 'changjiang',
-              label: 'long River'
-            },{
-              value: 'changjiang',
-              label: 'long River'
-            },{
-              value: 'changjiang',
-              label: 'long River'
-            }
-          ],
-        }
-      ],
-    },
-    {
-      value: 'zhejiang1',
-      label: '浙江1',
-      children: [
-        {
-          value: 'hangzhou',
-          label: 'hangzhou',
-          children: [
-            {
-              value: 'xihu',
-              label: (
-                <span>
-                  <span>West Lake</span>
-                  <span>*</span>
-                </span>
-              )
-            },
-            {
-              value: 'changjiang',
-              label: 'long River'
-            }
-          ],
-        }
-      ],
-    },
-    {
-      value: 'zhejiang2',
-      label: '浙江2',
-      children: [
-        {
-          value: 'hangzhou',
-          label: 'hangzhou',
-          children: [
-            {
-              value: 'xihu',
-              label: (
-                <span>
-                  <span>West Lake</span>
-                  <span>*</span>
-                </span>
-              )
-            },
-            {
-              value: 'changjiang',
-              label: 'long River'
-            }
           ],
         }
       ],
@@ -117,8 +41,44 @@ function CascaderView (){
           label: 'yihuan',
           children: [
             {
-              value: 'gugong',
-              label: 'gugong',
+              value: 'gugong1',
+              label: 'gugong1',
+            },
+            {
+              value: 'gugong2',
+              label: 'gugong2',
+            },
+            {
+              value: 'gugong3',
+              label: 'gugong3',
+            },
+            {
+              value: 'gugong4',
+              label: 'gugong4',
+            },
+            {
+              value: 'gugong5',
+              label: 'gugong5',
+            },
+            {
+              value: 'gugong6',
+              label: 'gugong6',
+            },
+            {
+              value: 'gugong7',
+              label: 'gugong7',
+            },
+            {
+              value: 'gugong8',
+              label: 'gugong8',
+            },
+            {
+              value: 'gugong9',
+              label: 'gugong9',
+            },
+            {
+              value: 'gugong10',
+              label: 'gugong10',
             },
           ],
         },
@@ -142,17 +102,17 @@ function CascaderView (){
     isLeaf?: boolean;
     loading?: boolean;
   }
-  const divStyle = (): React.CSSProperties => ({    // 此行
-    background: 'yellow',
-    maxWidth: '170px',
-    minWidth: '160px',
-    overflow: 'hidden',
-    textOverflow: 'ellipsis',
-    height: 'auto'
-  });
+  // const divStyle = (): React.CSSProperties => ({    // 此行
+  //   background: 'yellow',
+  //   maxWidth: '170px',
+  //   minWidth: '160px',
+  //   overflow: 'hidden',
+  //   textOverflow: 'ellipsis',
+  //   height: 'auto'
+  // });
   const styleTest = (): React.CSSProperties => ({
-    background: 'red',
-    color: 'red'
+    // background: 'red',
+    // color: 'red'
   })
   // const optionLists: Option[] = [
   //   {
@@ -268,43 +228,28 @@ function CascaderView (){
   }
   const suffixIcon = <span>-</span>
   const testEffect = classNames('test')
-  const dropdownRender = (menu: any) => {
-      // console.log('menu', menu)
-      return (
-        <div className={testEffect}>
-          { menu }
-          <span>2</span>
-        </div>
-      )
-  }
+  const [noEquitres, setNoEquitres] = useState(true)
+  // const dropdownRender = (menu: any) => {
+  //     // console.log('menu', menu)
+  //     return (
+  //       <div className={testEffect}>
+  //         { menu }
+  //         {
+  //           noEquitres ?
+  //           <span>暂无数据</span>
+  //           : null
+  //         }
+  //       </div>
+  //     )
+  // }
   {/* <div className="cascader-demo flex justify-center items-center">
     <Cascader options={options} placeHoder="test" defaultSelect={defaultSelect} changeOnSelect={changeOnSelect} resValue={resValue}/>
   </div> */}
 
   return (
-    <div >
-
-      <CascaderWraper className='caswrapper' haha="100px">
-        <DropdownWraper height='100px'></DropdownWraper>
-        <AntCascader options={options}
-          // loadData={loadData}
-          dropdownRender = {dropdownRender}
-          // multiple
-          showSearch = {{
-            render: (value, path) => {
-              console.log('path', path)
-              return <div title="13131313131313" style={{
-                width: '200px',
-                overflow: 'hidden',
-                textOverflow: 'ellipsis'
-              }}>1021030103103010301301031030103</div>
-            }
-          }}
-          dropdownMenuColumnStyle={(divStyle())}
-          onSearch={value => console.log(value)}
-        />
-      </CascaderWraper>
-      
+    <div>
+      <Cascader options={options} showSearch={{
+      }}></Cascader>
     </div>
   )
 }

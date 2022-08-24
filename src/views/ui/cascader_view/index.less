@@ -1,14 +1,14 @@
 .cascader-demo {
-  height: 200px;
+  // height: 200px;
   width: 300px;
   background: #fff;
   border-radius: 2px;
   padding: 4px;
 }
 
-.ant-cascader-menu {
-  max-height: 328px;
-}
+// .ant-cascader-menu {
+//   max-height: 328px;
+// }
 // .test {
 //   background: red;
 //   min-height: 30px;
@@ -16,17 +16,43 @@
 // }
 // 伪类
 [aria-checked = 'true'] {
-  color: red;
-  .icon {
-    display: inline-block;
-  }
+  // color: red;
+  // .icon {
+  //   display: inline-block;
+  // }
 }
-.test-icon {
-  display: none;
+
+ant-cascader-checkbox-indeterminate .ant-cascader-checkbox-inner:after {
+  background-color: #fff;
+  height: 2px;
+  transition: initial;
+  width: 10px;
 }
-.testD {
-  height: 10px;
+.ant-cascader-checkbox-indeterminate .ant-cascader-checkbox-inner::after {
+  background-color: #338fe5;
+    border: 0;
+    content: " ";
+    height: 8px;
+    left: 50%;
+    opacity: 1;
+    top: 50%;
+    transform: translate(-50%,-50%) scale(1);
+    width: 8px;
 }
+// .ant-cascader-checkbox-inner {
+//   &::after {
+//     background-color: #338fe5;
+//     border: 0;
+//     content: " ";
+//     height: 8px;
+//     left: 50%;
+//     opacity: 1;
+//     top: 50%;
+//     transform: translate(-50%,-50%) scale(1);
+//     width: 8px;
+//   }
+// }
+
 
 
 
