@@ -10,7 +10,7 @@ import { CascaderWraper, DropdownWraper } from './style'
 function CascaderView () {
   const options = [
     {
-      value: 'zhejiang',
+      value: 'zheiang',
       label: '浙江1121231312312321312321',
       children: [
         {
@@ -20,10 +20,11 @@ function CascaderView () {
             {
               value: 'xihu',
               disabled: false,
-              label: (
+              label:
+              (
                 <span>
                   <span>West Lake</span>
-                  {/* <span>*</span> */}
+                  <span>*</span>
                 </span>
               ),
               originLabel: 'west Lake'
@@ -250,6 +251,7 @@ function CascaderView () {
     <div>
       <Cascader options={options} showSearch={{
       }}></Cascader>
+      
     </div>
   )
 }
