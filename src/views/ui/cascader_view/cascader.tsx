@@ -9,7 +9,8 @@ export const Cascader = (props: any) => {
     menuStyle,
     dropdownMenuColumnStyle,
     abnormalTip,
-    leafIcon
+    leafSuffixIcon,
+    prefixIcon
   } = props
   interface Option {
     value: string | number;
@@ -25,68 +26,32 @@ export const Cascader = (props: any) => {
     primitiveLabel?: React.ReactNode
   }
   const [_options, _setOptions] = useState<Option[]>([])
-  // 前序
-  // 树层序遍历
-  // const treeLevelOrder = (tree: Option[]) => {
-  //   const queue = tree
-  //   let level = 0
-  //   while(queue.length) {
-  //     // todo
-  //     const len =  queue.length
-  //     for (let i = 0; i < len; i++) {
-  //       const curNode = queue.shift()
-  //       if (curNode?.children?.length) {
-  //         // queue.push(curNode.children)
-  //         curNode.label = <>
-  //           {curNode.label} { leafIcon }
-  //         </>
-  //       }
-  //     }
-  //     level++
-  //   }
-  // }
+  const [isOverHeight, setIsOverHeight] = useState(false)
   useEffect(() => {
-    const level = 0
-    const treeInOrder = (tree: any, tlevel: number) => {
+    const treePreOrder = (tree: any, treeLevel: number) => {
       if (tree.length >= 9) {
-        // todo
-        // 设置标志，需要设置最大高度
+        // 数量超过9
+        setIsOverHeight(true)
       }
-      tlevel++
-      console.log('tlevel', tlevel)
+      treeLevel++
       for(let i = 0; i < tree.length; i++) {
+        // 备份原数据
+        tree[i].originLabel = tree[i].label
+        // 图标包装
+        tree[i].label = <>
+          {prefixIcon?.[treeLevel-1]}
+          {tree[i]?.label}
+          {tree[i]?.children?.length ? null : leafSuffixIcon}
+        </>
         if (tree[i]?.children?.length) {
-          treeInOrder(tree[i]?.children, tlevel)
+          treePreOrder(tree[i]?.children, treeLevel)
         }
-        console.log(tree[i].value)
       }
     }
-    treeInOrder(options, 0)
-    // console.log(level)
-    // const option = JSON.parse(JSON.stringify(options))
-    // let option = options
-    // const queue = option
-    // let level = 0
-    // const res: Option[] = []
-    // console.log(1)
-    // while(queue.length) {
-    //   // todo
-    //   const len =  queue.length
-    //   for (let i = 0; i < len; i++) {
-    //     const curNode = queue.shift()
-    //     if (curNode?.children?.length) {
-    //       queue.push(curNode.children)
-    //     }
-    //     curNode.label = <>
-    //         { leafIcon } {curNode.label} 
-    //       </>
-    //     res.push(curNode)
-    //   }
-    //   level++
-    // }
-    // console.log('res', res)
+    treePreOrder(options, 0)
+    console.log(1)
     _setOptions(options)
-  }, [options, leafIcon])
+  }, [options, leafSuffixIcon, prefixIcon])
   if(!showSearch.filter) {
     // showSearch.filter = (inputValue: any, path: any) => {
     //   return path.some((option: any) => option?.laebl?.toLowerCase().indexOf(inputValue.toLowerCase()) > -1 || option?.originLabel?.toLowerCase().indexOf(inputValue.toLowerCase()) > -1)
@@ -142,6 +107,24 @@ export const Cascader = (props: any) => {
     return res
 
   }
+  const [_showSearch, _setShowSearch] = useState({})
+    useEffect(() => {
+    if (!showSearch?.render) {
+        const searchOps = {...showSearch}
+        // 如果用户没有自定义ShowSearch.render，则实现一个搜索高亮,同时设置title，如果有，则不处理，交给用户自定义
+        searchOps.render = (inputValue: any, path: any) => {
+            const keyWordReg = new RegExp(`${inputValue}`, 'g')
+            let title = ''
+            const hightLightRender = path.reduce((pre: any, cur: any) => {
+                title += cur.label
+                // 实现高亮
+                return `${pre}${cur?.label?.replace(keyWordReg, `<span class="ant-cascader-menu-item-keyword">${inputValue}</span>`)} `
+            }, '')
+            return <span dangerouslySetInnerHTML={{__html: hightLightRender}} title={title}></span>
+        }
+        _setShowSearch(searchOps)
+    }
+  }, [showSearch])
   return (
     <CascaderWraper>
         {/* <DropdownWraper menuBlockStyle={menuStyle}></DropdownWraper> */}

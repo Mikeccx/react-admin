@@ -162,7 +162,9 @@ function CascaderView () {
     <div>
       <Cascader options={op} showSearch={{
       }}
+      leafSuffixIcon="leaf"
       className="flex-1"
+      prefixIcon={[1,2,3]}
       abnormalTip={'000000000000000001212121212'}
       leafIcon={'🌟'}
       // menuStyle={{
