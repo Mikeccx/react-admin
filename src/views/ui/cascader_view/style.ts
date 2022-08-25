@@ -1,18 +1,21 @@
 import styled, { createGlobalStyle } from 'styled-components';
 
-interface haha {
-  haha: string
+interface menuStyle {
+  menuBlockStyle?: {
+    maxWidth?: string | number
+    minWidth?: string | number
+  }
 }
-export const CascaderWraper = styled.div<haha>`
+export const CascaderWraper = styled.div<menuStyle>`
+
 `
 interface height {
   height: string
 }
 
-export const DropdownWraper = createGlobalStyle<height>`
+export const DropdownWraper = createGlobalStyle<menuStyle>`
   .ant-cascader-menu {
-    max-height: ${props => { 
-      console.log('props', props)
-      return props.height}}
+    max-width: ${(props) => props.menuBlockStyle?.maxWidth};
+    min-width: ${(props) => props.menuBlockStyle?.minWidth}
   }
 `

@@ -5,13 +5,13 @@ import { useState } from 'react';
 import { StarOutlined } from '@ant-design/icons';
 import classNames from 'classnames';
 import { Cascader } from './cascader'
-import { CascaderWraper, DropdownWraper } from './style'
+import { CascaderWraper } from './style'
 // console.log('DropdownWraper', DropdownWraper)
 function CascaderView () {
   const options = [
     {
-      value: 'zheiang',
-      label: '浙江1121231312312321312321',
+      value: 'zhejiang',
+      label: '浙江',
       children: [
         {
           value: 'hangzhou',
@@ -20,10 +20,9 @@ function CascaderView () {
             {
               value: 'xihu',
               disabled: false,
-              label:
-              (
+              label: (
                 <span>
-                  <span>West Lake</span>
+                  <span className='flex-1'>111</span>
                   <span>*</span>
                 </span>
               ),
@@ -115,95 +114,7 @@ function CascaderView () {
     // background: 'red',
     // color: 'red'
   })
-  // const optionLists: Option[] = [
-  //   {
-  //     value: 'zhejiang12132131232144',
-  //     label: 'Zhejiang',
-  //     isLeaf: false,
-  //   },
-  //   {
-  //     value: 'jiangsu',
-  //     label: 'Jiangsu',
-  //     isLeaf: false,
-  //   },
-  //   {
-  //     value: 'zhejiang1',
-  //     label: 'Zhejiang1',
-  //     isLeaf: false,
-  //   },
-  //   {
-  //     value: 'jiangsu2',
-  //     label: 'Jiangsu2',
-  //     isLeaf: false,
-  //   },
-  //   {
-  //     value: 'zhejiang3',
-  //     label: 'Zhejiang3',
-  //     isLeaf: false,
-  //   },
-  //   {
-  //     value: 'jiangsu4',
-  //     label: 'Jiangsu4',
-  //     isLeaf: false,
-  //   },
-  //   {
-  //     value: 'zhejiang5',
-  //     label: 'Zhejiang5',
-  //     isLeaf: false,
-  //   },
-  //   {
-  //     value: 'jiangsu6',
-  //     label: 'Jiangsu6',
-  //     isLeaf: false,
-  //   },
-  //   {
-  //     value: 'jiangsu7',
-  //     label: 'Jiangsu7',
-  //     isLeaf: false,
-  //   },
-  //   {
-  //     value: 'jiangsu8',
-  //     label: 'Jiangsu8',
-  //     isLeaf: false,
-  //   },
-  //   {
-  //     value: 'jiangsu9',
-  //     label: 'Jiangsu9',
-  //     isLeaf: false,
-  //   },
-  // ];
-  // const [options, setOptions] = useState<Option[]>(optionLists);
-  // const loadData = (selectedOptions: any[]) => {
-  //   console.log(1)
-  //   const targetOption = selectedOptions[selectedOptions.length - 1];
-  //   targetOption.loading = true;
-
-  //   // load options lazily
-  //   setTimeout(() => {
-  //     targetOption.loading = false;
-  //     targetOption.children = [
-  //       {
-  //         label: (
-  //           <div className="flex">
-  //             <span>{`${targetOption.label}Dynamic 1`}</span>
-  //             <span className='test-icon icon'>*</span>
-  //           </div>
-  //         ),
-  //         value: 'dynamic1'
-  //       },
-  //       {
-  //         label: (
-  //           <div className="flex">
-  //             <span>{`${targetOption.label}Dynamic 2`}</span>
-  //             <span className='test-icon icon'>*</span>
-  //           </div>
-  //         ),
-  //         value: 'dynamic2',
-  //       },
-  //     ];
-  //     setOptions([...options]);
-  //   }, 1000);
-  // };
+  const [op, setOp] = useState<any>(options)
   const filter = (inputValue: string, path: any[]) =>
   path.some(
     option => (option.label as string).toLowerCase().indexOf(inputValue.toLowerCase()) > -1,
@@ -249,11 +160,22 @@ function CascaderView () {
 
   return (
     <div>
-      <Cascader options={options} showSearch={{
-      }}></Cascader>
-      
+      <Cascader options={op} showSearch={{
+      }}
+      className="flex-1"
+      abnormalTip={'000000000000000001212121212'}
+      leafIcon={'🌟'}
+      // menuStyle={{
+      //   maxWidth: '200px',
+      //   minWidth: '160px'
+      // }}
+      ></Cascader>
+      {/* <button onClick={() => setOp(
+        options
+      )}>测试改变</button> */}
     </div>
   )
 }
 
 export { CascaderView }
+
